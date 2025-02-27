@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="bn">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>🛒থলে</title>
+       <style>
+       html,body {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+           scroll-behavior: smooth;
+           height: 100%;
+           overscroll-behavior: none;
+       }
+       html::-webkit-scrollbar,
+       body::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+       }
+       .no-scrollbar::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           scroll-behavior: smooth;
+       }
+       @media (max-width: 9999px) {
+           html,
+           body {
+               -ms-overflow-style: -ms-autohiding-scrollbar;
+           }
+       }
+       html,
+       body {
+           -webkit-overflow-scrolling: touch;
+       }
+       :root {
+           --primary-color: #ff6347;
+           --secondary-color: #5e9451;
+           --text-color: #333;
+           --background-color: #f5f5f5;
+           --footer-bg: #333;
+           --footer-text: #bbb;
+           --glow-color: green;
+       }
+       html {
+           font-size: calc(0.5vw + 0.5vh);
+       }
+       * {
+           margin: 0;
+           padding: 0;
+           box-sizing: border-box;
+           font-family: 'Poppins', sans-serif;
+       }
+       body {
+           font-size: 1rem;
+           line-height: 1.6;
+           color: var(--text-color);
+           background: var(--background-color);
+           background-repeat: no-repeat;
+           padding: 2vh;
+           transition: all 0.5s ease;
+           animation: gradientBG 15s ease infinite;
+           background-size: 400% 400%;
+           background-attachment: fixed;
+       }
+       @keyframes gradientBG {
+           0% {
+               background-position: 0% 50%;
+           }
+           50% {
+               background-position: 100% 50%;
+           }
+           100% {
+               background-position: 0% 50%;
+           }
+       }
+       body::before {
+           content: "";
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-image: url("cows.jpg");
+           background-size: cover;
+           background-position: center;
+           opacity: 0.1;
+           z-index: -1;
+           pointer-events: none;
+           animation: zoomInOut 30s infinite alternate;
+       }
+       @keyframes zoomInOut {
+           0% {
+               transform: scale(1);
+           }
+           100% {
+               transform: scale(1.1);
+           }
+       }
+       header {
+           background-image: url("753.jpg");
+           background-size: cover;
+           background-position: center;
+           color: #fff;
+           padding: 2vh 0;
+           text-align: center;
+           box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+           position: relative;
+           overflow: hidden;
+           perspective: 1000px;
+           transform-style: preserve-3d;
+       }
+       header h1 {
+           margin-bottom: 1vh;
+           font-size: 3rem;
+           font-weight: 700;
+           letter-spacing: 2px;
+           animation: textGlow 1.5s ease-in-out infinite;
+           transform: rotateX(20deg);
+       }
+       @keyframes textGlow {
+           0%,
+           100% {
+               text-shadow: 0 0 10px var(--glow-color), 0 0 20px var(--glow-color),
+                   0 0 30px var(--glow-color), 0 0 40px var(--glow-color);
+           }
+           50% {
+               text-shadow: 0 0 5px var(--glow-color), 0 0 10px var(--glow-color),
+                   0 0 15px var(--glow-color), 0 0 20px var(--glow-color);
+           }
+       }
+       nav ul {
+           list-style: none;
+           padding: 0;
+           display: flex;
+           justify-content: center;
+           flex-wrap: wrap;
+           perspective: 1000px;
+           transform: rotateY(20deg);
+       }
+       nav ul li {
+           margin: 1vh 2vw;
+       }
+       nav ul li a {
+           color: white;
+           text-decoration: none;
+           font-weight: bold;
+           position: relative;
+           padding: 0.5vh 0;
+           font-size: 1.2rem;
+           transition: all 0.3s ease;
+           animation: textGlow 1.5s ease-in-out infinite;
+       }
+       nav ul li a::before,
+       nav ul li a::after {
+           content: '';
+           position: absolute;
+           width: 0;
+           height: 0.2vh;
+           background-color: var(--primary-color);
+           transition: all 0.3s ease;
+       }
+       nav ul li a::before {
+           left: 0;
+           top: 0;
+       }
+       nav ul li a::after {
+           right: 0;
+           bottom: 0;
+       }
+       nav ul li a:hover::before,
+       nav ul li a:hover::after {
+           width: 100%;
+       }
+       main {
+           background-image: url("cows.jpg");
+           background-size: cover;
+           background-position: center;
+           padding: 1vh 0.5vw;
+           margin-top: 3vh;
+           border-radius: 15px;
+           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+           transition: all 0.3s ease;
+           transform: rotateX(10deg) rotateY(10deg);
+       }
+       main:hover {
+           transform: translateY(-5px) rotateX(0deg) rotateY(0deg);
+           box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+       }
+       #receipt {
+           text-align: center;
+           max-width: 70vw;
+           margin: 0 auto;
+           padding: 4vh 2vw;
+           background: none;
+           border-radius: 20px;
+           box-shadow: 0 0 30px rgba(0, 0, 0, 0.1);
+           position: relative;
+           overflow: hidden;
+           perspective: 1000px;
+           transform-style: preserve-3d;
+       }
+       #receipt::before {
+           content: '';
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background: rgba(255, 255, 255, 0.2);
+           backdrop-filter: blur(0.1px);
+           border-radius: 20px;
+           box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+           border: 1px solid rgba(255, 255, 255, 0.3);
+           z-index: -1;
+           opacity: 0.9;
+       }
+       #receipt img {
+           display: block;
+           margin: 0 auto 3vh;
+           max-width: 100%;
+           height: auto;
+           transition: all 0.3s ease;
+           transform: rotateY(20deg);
+       }
+       #receipt img:hover {
+           transform: scale(1.05) rotateY(0deg);
+       }
+       #receipt h1 {
+           font-size: 3rem;
+           margin: 2vh 0;
+           color: var(--primary-color);
+           text-transform: uppercase;
+           letter-spacing: 3px;
+           transform: rotateX(20deg);
+           text-shadow:
+               1px 1px 2px rgba(255, 0, 0, 0.8),
+               2px 2px 4px rgba(0, 255, 0, 0.7),
+               3px 3px 6px rgba(0, 0, 255, 0.6),
+               4px 4px 8px rgba(255, 255, 0, 0.5);
+       }
+       #receipt p {
+           font-size: 1.5rem;
+           color: white;
+           margin-bottom: 1vh;
+           transition: all 0.5s ease;
+           transform: rotateX(1deg) rotateY(1deg) translateZ(2px);
+           text-shadow:
+               1px 1px 2px rgba(199, 21, 133, 0.8),
+               2px 2px 4px rgba(173, 255, 47, 0.7),
+               3px 3px 6px rgba(70, 130, 180, 0.6),
+               4px 4px 8px rgba(255, 165, 0, 0.5),
+               5px 5px 10px rgba(255, 105, 180, 0.4),
+               6px 6px 12px rgba(64, 224, 208, 0.3),
+               7px 7px 14px rgba(138, 43, 226, 0.2);
+           perspective: 1000px;
+       }
+       #receipt p:hover {
+           transform: translateX(1vw) translateY(-0.5vh) rotateX(0deg) rotateY(0deg) translateZ(30px);
+           color: #ff7550;
+           text-shadow:
+               2px 2px 3px rgba(255, 69, 0, 0.8),
+               3px 3px 6px rgba(0, 206, 209, 0.7),
+               4px 4px 8px rgba(138, 43, 226, 0.6),
+               5px 5px 10px rgba(75, 0, 130, 0.5),
+               6px 6px 12px rgba(255, 20, 147, 0.4),
+               7px 7px 14px rgba(50, 205, 50, 0.3);
+       }
+       hr {
+           border: 0;
+           height: 0.2vh;
+           background-image: linear-gradient(to right, transparent, var(--primary-color), transparent);
+           margin: 3vh 0;
+           transform: rotateX(10deg);
+       }
+       table {
+           width: 100%;
+           border-collapse: separate;
+           border-spacing: 0 1vh;
+           margin-bottom: 3vh;
+           perspective: 1000px;
+       }
+       table th,
+       table td {
+           padding: 1.5vh 1vw;
+           text-align: center;
+           transition: all 0.3s ease;
+           transform: rotateX(10deg);
+           font-size: 2.2rem;
+       }
+       table th {
+           background-color: var(--secondary-color);
+           color: #fff;
+           text-transform: uppercase;
+           letter-spacing: 1px;
+           font-weight: 600;
+       }
+       table tr {
+           background-color: rgba(255, 255, 255, 0.5);
+           transition: all 0.3s ease;
+           transform: rotateX(5deg);
+           vertical-align: middle;
+       }
+       table tr:hover {
+           transform: scale(1.02) rotateX(0deg);
+           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+       }
+       table td {
+           color: var(--text-color);
+           font-weight: 500;
+       }
+       #total-price {
+           font-size: 1.6rem;
+           font-weight: 700;
+           color: var(--primary-color);
+           text-transform: uppercase;
+           letter-spacing: 1px;
+       }
+       button {
+           display: inline-block;
+           text-align: center;
+           background: none;
+           border: none;
+           font-size: 2.5rem;
+           text-transform: uppercase;
+           letter-spacing: 2px;
+           cursor: pointer;
+           transition: all 0.3s ease;
+           text-shadow:
+               1px 1px 2px rgba(0, 0, 0, 0.3),
+               2px 2px 4px rgba(0, 0, 0, 0.3),
+               3px 3px 6px rgba(0, 0, 0, 0.3),
+               4px 4px 8px rgba(0, 0, 0, 0.3);
+           transform: rotateX(10deg);
+           color: GREEN;
+           padding: 10px 20px;
+       }
+       button:hover {
+           transform: translateY(-4px) rotateX(0deg);
+           text-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+       }
+       button:active {
+           transform: translateY(2px) rotateX(0deg);
+       }
+       @media only screen and (max-width: 600px) {
+           html {
+               font-size: calc(1.2vw + 1.2vh);
+           }
+           header h1 {
+               font-size: 2rem;
+           }
+           nav ul li a {
+               font-size: 1rem;
+           }
+           #receipt h1 {
+               font-size: 2.5rem;
+           }
+           #receipt p,
+           table th,
+           table td,
+           button {
+               font-size: 1rem;
+           }
+           #total-price {
+               font-size: 1.2rem;
+           }
+       }
+       .quantity-control {
+           text-align: center;
+       }
+       .quantity-control button {
+           display: block;
+           width: 100%;
+       }
+       .quantity-control .quantity {
+           margin: 5px 0;
+           font-size: 1.2em;
+       }
+       @media print {
+           body {
+               background: #fff;
+               color: #000;
+               margin: 0;
+               padding: 0;
+               font-size: 12pt;
+               line-height: 1.4;
+           }
+           header,
+           nav,
+           button,
+           footer {
+               display: none;
+               height: 0;
+               margin: 0;
+               padding: 0;
+               visibility: hidden;
+           }
+           #receipt {
+               box-shadow: none;
+               background: #fff;
+               padding: 1in;
+               max-width: 100%;
+               transform: none;
+           }
+           #receipt img {
+               display: none;
+               height: 0;
+               margin: 0;
+               padding: 0;
+               visibility: hidden;
+           }
+           table {
+               border-spacing: 0;
+               width: 100%;
+           }
+           table th,
+           table td {
+               background: #fff;
+               color: #000;
+               box-shadow: none;
+               padding: 0.5rem;
+               border: 1px solid #ddd;
+           }
+           #total-price {
+               color: #000;
+               box-shadow: none;
+               background: #fff;
+               padding: 1rem;
+               border-top: 2px solid #000;
+           }
+           * {
+               background: none !important;
+               box-shadow: none !important;
+               text-shadow: none !important;
+               animation: none !important;
+               transform: none !important;
+           }
+           body::before,
+           header::before,
+           main::before,
+           #receipt::before {
+               display: none;
+               content: none;
+               background: none;
+           }
+       }
+       </style>
+    </head>
+    <body>
+        <header>
+            <h1>রশিদ</h1>
+            <nav>
+                <ul>
+                    <li><a href="user_dashboard.html">🐄গরুর হাট </a></li>
+                    <li><a href="javascript:logout();">↪লগ আউট </a></li>
+                </ul>
+            </nav>
+        </header>
+        <main>
+            <div id="receipt">
+                <div class="center">
+                    <img src="anms5519.png" id="logo" width="300" />
+                    <br />
+                    <h1>রশিদ</h1>
+                    <p>টাকা দাও গরু নেও.কম</p>
+                    <p>তারিখ: <span id="receipt-date"> </span></p>
+                </div>
+                <table id="cart-items">
+                    <thead>
+                        <tr>
+                            <th>গরুর ধরন</th>
+                            <th>একক মূল্য (টাকা)</th>
+                            <th>গরু সংখ্যা</th>
+                            <th>মোট মূল্য (টাকা)</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+                <p id="total-price">দাম: ৳০.০০</p>
+                <div class="button-container">
+                    <button onclick="checkout()">🛍️ক্রয়</button>
+                    <button onclick="printReceipt()">🖨️প্রিন্ট</button>
+                    <button onclick="clearCart()">🗑️খালি করুন!</button>
+                    <button onclick="continueShopping()">
+                        🌀কেনাকাটা চালিয়ে যান
+                    </button>
+                </div>
+            </div>
+        </main>
+        <script>
+                    document.addEventListener("DOMContentLoaded", () => {
+                        const userId = localStorage.getItem("loggedInUser.id");
+                        const savedCart = userId
+                            ? JSON.parse(localStorage.getItem(`cart_${userId}`))
+                            : null;
+                        if (savedCart) {
+                            localStorage.setItem("cart", JSON.stringify(savedCart));
+                            localStorage.removeItem(`cart_${userId}`);
+                        }
+                        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        displayCartItems(cart);
+                        calculateTotalPrice(cart);
+                        updateReceiptDate();
+                    });
+                    const englishToBanglaDigits = {
+                        0: "০",
+                        1: "১",
+                        2: "২",
+                        3: "৩",
+                        4: "৪",
+                        5: "৫",
+                        6: "৬",
+                        7: "৭",
+                        8: "৮",
+                        9: "৯",
+                    };
+                    function convertToBanglaDigits(number) {
+                        return number
+                            .toString()
+                            .split("")
+                            .map((digit) => englishToBanglaDigits[digit] || digit)
+                            .join("");
+                    }
+                    function displayCartItems(cart) {
+                        const cartContainer = document
+                            .getElementById("cart-items")
+                            .querySelector("tbody");
+                        cartContainer.innerHTML = "";
+                        cart.forEach((item, index) => {
+                            const row = document.createElement("tr");
+                            row.innerHTML = `
+                                            <td>${item.name}</td>
+                                            <td>${convertToBanglaDigits(item.price)}</td>
+                                            <td class="quantity-control">
+                                                <button onclick="updateQuantity(${index}, -1)">-</button>
+                                                <div class="quantity">${convertToBanglaDigits(
+                                                    item.quantity
+                                                )}</div>
+                                                <button onclick="updateQuantity(${index}, 1)">+</button>
+                                            </td>
+                                            <td>${convertToBanglaDigits(
+                                                item.price * item.quantity
+                                            )}</td>
+                                                <button onclick="removeItem(${index})">❌</button>
+                                        `;
+                            cartContainer.appendChild(row);
+                        });
+                    }
+                    function updateQuantity(index, change) {
+                        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        if (cart[index].quantity + change > 0) {
+                            cart[index].quantity += change;
+                            localStorage.setItem("cart", JSON.stringify(cart));
+                            displayCartItems(cart);
+                            calculateTotalPrice(cart);
+                        }
+                    }
+                    function removeItem(index) {
+                        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        cart.splice(index, 1);
+                        localStorage.setItem("cart", JSON.stringify(cart));
+                        displayCartItems(cart);
+                        calculateTotalPrice(cart);
+                    }
+                    function calculateTotalPrice(cart) {
+                        const totalPriceElement = document.getElementById("total-price");
+                        const total = cart.reduce(
+                            (sum, item) => sum + item.price * item.quantity,
+                            0
+                        );
+                        const tax = (total * 0.05).toFixed(2);
+                        const maintotal = (total + parseFloat(tax)).toFixed(2);
+                        totalPriceElement.innerHTML = `
+                    <div style="display: flex; justify-content: space-between">
+                        <span style="text-align: center"
+                            >দাম:<br />৳${convertToBanglaDigits( total.toFixed(2) )}</span
+                        >
+                        <div style="text-align: center">
+                            <br />মোট দাম:<br />${convertToBanglaDigits( maintotal )} টাকা (মাত্র)
+                        </div>
+                        <span style="text-align: center"
+                            >কর (৫%):<br />৳${convertToBanglaDigits( tax )}</span
+                        >
+                    </div>
+                                                        `;
+                    }
+                    function checkout() {
+                        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+                        if (cart.length === 0) {
+                            alert("🤭আপনার থলে তো খালি!");
+                            return;
+                        }
+                        const checkouts = JSON.parse(localStorage.getItem("checkouts")) || [];
+            const total = cart.reduce((sum, item) => sum + item.price * item.quantity, 0).toFixed(2);
+                        const newCheckout = {
+                            date: new Date().toLocaleString(),
+                            user: loggedInUser.fullname,
+                            cart: cart,
+                            total: total,
+                        };
+                        checkouts.push(newCheckout);
+                        localStorage.setItem("checkouts", JSON.stringify(checkouts));
+                        alert("পেমেন্ট সফল!👍ক্রয় করার জন্য আপনাকে ধন্যবাদ।🤗");
+                        clearCart();
+                    }
+                    function clearCart() {
+                        localStorage.removeItem("cart");
+                        displayCartItems([]);
+                        calculateTotalPrice([]);
+                    }
+                    function updateReceiptDate() {
+                        const receiptDateElement = document.getElementById("receipt-date");
+                        const today = new Date();
+                        const formattedDate = `${convertToBanglaDigits(
+                            today.getDate()
+                        )}/${convertToBanglaDigits(today.getMonth() + 1)}/${convertToBanglaDigits(
+                            today.getFullYear()
+                        )}`;
+                        receiptDateElement.textContent = formattedDate;
+                    }
+                    function logout() {
+                        const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                        const userId = JSON.parse(localStorage.getItem("loggedInUser"))?.id;
+                        if (cart.length > 0 && userId) {
+                            localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+                        }
+                        localStorage.removeItem("loggedInUser");
+                        localStorage.removeItem("cart");
+                        window.location.href = "index.html";
+                    }
+                    function printReceipt() {
+                        window.print();
+                    }
+                    function continueShopping() {
+                        window.location.href = "user_dashboard.html";
+                    }
+                    setTimeout(logout, 3000000);
+        </script>
+<script>
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  const forbiddenKeys = ["u", "s", "c", "p", "x", "a", "v"];
+  if (e.ctrlKey && forbiddenKeys.includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I")) {
+    e.preventDefault();
+  }
+});
+["copy", "cut", "paste", "dragstart"].forEach((evt) =>
+  document.addEventListener(evt, (e) => e.preventDefault())
+);
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 2 || window.outerHeight - window.innerHeight > 200) {
+    document.body.innerHTML = `
+    <style>
+      body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Poppins', sans-serif; text-align: center; }
+      .overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: radial-gradient(circle, #ff0000, #8b0000);
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
+      h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
+      p { font-size: 1.2rem; max-width: 80%; margin: auto; }
+      .error-icon { font-size: 5rem; color: #fff; animation: blink 0.8s infinite alternate; }
+      @keyframes blink { 0% { opacity: 1; } 100% { opacity: 0.4; } }
+    </style>
+    <div class="overlay">
+      <div>
+        <div class="error-icon">🚫</div>
+        <h1>Security Violation Detected</h1>
+        <p>Our system detected an unauthorized attempt. Access has been locked.<br>Close all developer tools and refresh the page.</p>
+      </div>
+    </div>
+    `;
+  }
+}, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  const tables = document.querySelectorAll("table");
+  tables.forEach((table) => {
+    const cells = table.querySelectorAll("td");
+    cells.forEach((cell, index) => {
+      cell.style.transition = "transform 0.3s ease, background 0.3s ease";
+      cell.addEventListener("mouseenter", () => {
+        cell.style.transform = "scale(1.1) rotateY(5deg)";
+        cell.style.background = "rgba(255, 165, 0, 0.7)";
+      });
+      cell.addEventListener("mouseleave", () => {
+        cell.style.transform = "scale(1) rotateY(0deg)";
+        cell.style.background = "";
+      });
+    });
+  });
+});
+</script>
+    </body>
+</html>

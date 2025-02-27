@@ -1,0 +1,766 @@
+<!DOCTYPE html>
+<html lang="bn">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>🪪প্রোফাইল</title>
+       <style>
+       html,body {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+           scroll-behavior: smooth;
+           height: 100%;
+           overscroll-behavior: none;
+       }
+       html::-webkit-scrollbar,
+       body::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+       }
+       .no-scrollbar::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           scroll-behavior: smooth;
+       }
+       @media (max-width: 9999px) {
+           html,
+           body {
+               -ms-overflow-style: -ms-autohiding-scrollbar;
+           }
+       }
+       html,
+       body {
+           -webkit-overflow-scrolling: touch;
+       }
+       :root {
+           --primary-color: #4a90e2;
+           --secondary-color: #f39c12;
+           --background-color: #f4f4f4;
+           --text-color: #333;
+           --card-bg: rgba(255, 215, 0, 0.5);
+           --success-color: #2ecc71;
+           --error-color: #e74c3c;
+           --hover-scale: 1.05;
+           --transition-duration: 0.3s;
+           --shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+           --border-radius: 1vmax;
+           --font-base-size: 1.5vmin;
+           --bg-color: url("towards_the_morning_meadow_by_jchanders_d152d46.jpg");
+           --bg-color1: url("cows-eating-lush-grass-green-field-front-fuji-mountain-japan.jpg");
+       }
+       .dark-mode {
+           --background-color: #2c3e50;
+           --bg-color: url("the_last_rays_of_the_sun_by_cat_with_horns_dg03aiy.png");
+           --bg-color1: url("30.jpg");
+           --text-color: #ecf0f1;
+           --card-bg: linear-gradient(45deg, rgba(52, 73, 94, 0.8), rgba(255, 105, 180, 0.6), rgba(0, 255, 255, 0.6));
+       }
+       body {
+           font-family: "Roboto", Arial, sans-serif;
+           background: var(--bg-color);
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+           color: var(--text-color);
+           margin: 0;
+           padding: 0;
+           transition: all var(--transition-duration) ease;
+           overflow-x: hidden;
+           font-size: var(--font-base-size);
+       }
+       body::before {
+           content: "";
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: var(--background-color);
+           opacity: 0.2;
+           pointer-events: none;
+       }
+       .container {
+           max-width: 80vmin;
+           margin: 0 auto;
+           padding: 2vmin;
+           animation: fadeIn var(--transition-duration) ease-in-out;
+       }
+       nav {
+           background: none;
+           padding: 1vmin 0;
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+       }
+       nav ul {
+           list-style-type: none;
+           padding: 0;
+           margin: 0;
+           display: flex;
+           justify-content: center;
+           gap: 33vmin;
+       }
+       nav ul li a {
+           color: blue;
+           text-decoration: none;
+           font-weight: bold;
+           padding: 1vmin 2vmin;
+           border-radius: 0.7vmin;
+           background: rgba(255, 255, 255, 0.9);
+           box-shadow: 0px 0px 10px gold;
+           transition: color var(--transition-duration) ease;
+       }
+       @keyframes fadeIn {
+           0% {
+               opacity: 0;
+           }
+           100% {
+               opacity: 1;
+           }
+       }
+       @keyframes slideInDown {
+           0% {
+               transform: translateY(-100%);
+           }
+           100% {
+               transform: translateY(0);
+           }
+       }
+       .profile-grid {
+           display: grid;
+           grid-template-columns: 1fr 2fr;
+           gap: 2vmin;
+           margin-top: 2vmin;
+       }
+       .profile-card,
+       .profile-form {
+           background-color: var(--card-bg);
+           border-radius: var(--border-radius);
+           box-shadow: var(--shadow);
+           padding: 2vmin;
+           animation: float 3s infinite ease-in-out;
+       }
+       .profile-picture-container {
+           position: relative;
+           width: 20vmin;
+           height: 20vmin;
+           margin: 0 auto 2vmin;
+           overflow: hidden;
+           border-radius: 50%;
+           border: 0.5vmin solid var(--primary-color);
+           transition: transform var(--transition-duration) ease;
+           cursor: pointer;
+           animation: bounce 2s infinite;
+       }
+       .profile-picture {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+           transition: transform var(--transition-duration) ease;
+       }
+       .profile-picture-container:hover .profile-picture {
+           transform: scale(var(--hover-scale));
+       }
+       .profile-picture-overlay {
+           position: absolute;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: rgba(0, 0, 0, 0.5);
+           color: white;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           opacity: 0;
+           transition: opacity var(--transition-duration) ease;
+           border-radius: 50%;
+       }
+       .profile-picture-container:hover .profile-picture-overlay {
+           opacity: 1;
+       }
+       .profile-stats {
+           display: flex;
+           justify-content: space-around;
+           margin-top: 2vmin;
+           animation: fadeInUp var(--transition-duration) ease-in-out;
+       }
+       .stat {
+           text-align: center;
+       }
+       .stat-value {
+           font-size: 1.5vmin;
+           font-weight: bold;
+           color: var(--primary-color);
+           transition: color var(--transition-duration) ease;
+       }
+       .alert {
+           padding: 1.5vmin;
+           background-color: var(--error-color);
+           color: white;
+           margin-bottom: 2vmin;
+           animation: flash 1.5s infinite;
+           border-radius: var(--border-radius);
+       }
+       .text-section {
+           animation: fadeInLeft 1s ease-out;
+       }
+       .wobble-button {
+           animation: wobble 1s ease;
+           display: inline-block;
+           background-color: var(--primary-color);
+           color: #fff;
+           padding: 1vmin 2vmin;
+           border-radius: 0.5vmin;
+           cursor: pointer;
+           transition: box-shadow var(--transition-duration) ease;
+       }
+       .wobble-button:hover {
+           box-shadow: 0 0.8vmin 1.6vmin rgba(0, 0, 0, 0.2);
+       }
+       .profile-form h2 {
+           margin-top: 0;
+           text-align: center;
+           font-size: 2vmin;
+       }
+       .form-group {
+           margin-bottom: 2vmin;
+           animation: fadeInUp var(--transition-duration) ease-in-out;
+       }
+       label {
+           display: block;
+           margin-bottom: 0.5vmin;
+           font-weight: bold;
+           transition: color var(--transition-duration) ease;
+           font-size: 1.2vmin;
+       }
+       input[type="text"],
+       input[type="email"],
+       input[type="password"],
+       input[type="tel"],
+       textarea {
+           width: 100%;
+           padding: 1vmin;
+           border: 0.1vmin solid #ddd;
+           border-radius: var(--border-radius);
+           font-size: 1.5vmin;
+           transition: border-color var(--transition-duration) ease, box-shadow var(--transition-duration) ease;
+       }
+       input:focus,
+       textarea:focus {
+           border-color: var(--primary-color);
+           box-shadow: 0 0 0.5vmin rgba(74, 144, 226, 0.5);
+           outline: none;
+       }
+       input.error {
+           border-color: var(--error-color);
+           animation: shake 0.5s;
+       }
+       button {
+           background-color: var(--primary-color);
+           color: #fff;
+           border: none;
+           padding: 1vmin 2vmin;
+           border-radius: var(--border-radius);
+           cursor: pointer;
+           font-size: 1.5vmin;
+           transition: background-color var(--transition-duration) ease, transform var(--transition-duration) ease;
+       }
+       button:hover {
+           background-color: #3a7bd5;
+           transform: translateY(-0.2vmin);
+       }
+       .theme-toggle {
+           position: fixed;
+           bottom: 2%;
+           right: 2%;
+           background-color: var(--primary-color);
+           color: #fff;
+           border: none;
+           padding: 10px;
+           border-radius: 50%;
+           cursor: pointer;
+           font-size: 5vmin;
+           transform-origin: center;
+       }
+       .dark-mode .theme-toggle {
+           transform: rotate(180deg);
+           background-color: var(--secondary-color);
+       }
+       @media (max-width: 768px) {
+           .profile-grid {
+               grid-template-columns: 1fr;
+           }
+       }
+       @keyframes slideInRight {
+           0% {
+               transform: translateX(100%);
+               opacity: 0;
+           }
+           100% {
+               transform: translateX(0);
+               opacity: 1;
+           }
+       }
+       .profile-card {
+           animation: slideInRight 1s ease;
+       }
+       h2 {
+           animation: pulse 2s infinite;
+       }
+       .error,
+       .success {
+           font-size: 0.9em;
+           margin-top: 5px;
+           opacity: 0;
+           animation: fadeInUp var(--transition-duration) ease-in-out forwards;
+       }
+       #file-input {
+           display: none;
+       }
+       @keyframes fadeIn {
+           0% {
+               opacity: 0;
+               transform: translateY(20px);
+           }
+           100% {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+       @keyframes slideInDown {
+           0% {
+               transform: translateY(-100%);
+           }
+           100% {
+               transform: translateY(0);
+           }
+       }
+       @keyframes flash {
+           0% {
+               opacity: 1;
+           }
+           50% {
+               opacity: 0.5;
+           }
+           100% {
+               opacity: 1;
+           }
+       }
+       @keyframes fadeInLeft {
+           0% {
+               opacity: 0;
+               transform: translateX(-20px);
+           }
+           100% {
+               opacity: 1;
+               transform: translateX(0);
+           }
+       }
+       @keyframes wobble {
+           0% {
+               transform: translateX(0);
+           }
+           25% {
+               transform: translateX(-10%);
+           }
+           50% {
+               transform: translateX(10%);
+           }
+           75% {
+               transform: translateX(-5%);
+           }
+           100% {
+               transform: translateX(0);
+           }
+       }
+       @keyframes colorFade {
+           0% {
+               color: #fff;
+           }
+           100% {
+               color: red;
+           }
+       }
+       @keyframes float {
+           0% {
+               transform: translateY(0);
+           }
+           50% {
+               transform: translateY(-0.5vmin);
+           }
+           100% {
+               transform: translateY(0);
+           }
+       }
+       @keyframes zoomIn {
+           0% {
+               transform: scale(0.8);
+               opacity: 0;
+           }
+           100% {
+               transform: scale(1);
+               opacity: 1;
+           }
+       }
+       @keyframes bounce {
+           0%,
+           20%,
+           50%,
+           80%,
+           100% {
+               transform: translateY(0);
+           }
+           40% {
+               transform: translateY(-1.5vmin);
+           }
+           60% {
+               transform: translateY(-0.75vmin);
+           }
+       }
+       @keyframes rotateIn {
+           0% {
+               transform: rotate(-360deg);
+               opacity: 0;
+           }
+           100% {
+               transform: rotate(0deg);
+               opacity: 1;
+           }
+       }
+       @keyframes fadeInUp {
+           0% {
+               opacity: 0;
+               transform: translateY(100%);
+           }
+           100% {
+               opacity: 1;
+               transform: translateY(0);
+           }
+       }
+       @keyframes shake {
+           0%,
+           100% {
+               transform: translateX(0);
+           }
+           20%,
+           60% {
+               transform: translateX(-10px);
+           }
+           40%,
+           80% {
+               transform: translateX(10px);
+           }
+       }
+       @keyframes pulse {
+           0% {
+               transform: scale(1);
+           }
+           50% {
+               transform: scale(1.1);
+           }
+           100% {
+               transform: scale(1);
+           }
+       }
+       @keyframes swing {
+           0% {
+               transform: rotate(0deg);
+           }
+           25% {
+               transform: rotate(15deg);
+           }
+           50% {
+               transform: rotate(-10deg);
+           }
+           75% {
+               transform: rotate(5deg);
+           }
+           100% {
+               transform: rotate(0deg);
+           }
+       }
+       @keyframes fadeInUp {
+           to {
+               opacity: 1;
+           }
+       }
+       </style>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="user_dashboard.html">🐄গরুর হাট</a></li>
+                <li><a href="javascript:logout();">↪লগ আউট</a></li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="profile-grid">
+                <div class="profile-card">
+                    <div class="profile-picture-container">
+                        <img
+                            id="profile-pic"
+                            src="default.jpg"
+                            alt="Profile Picture"
+                            class="profile-picture"
+                        />
+                        <div
+                            class="profile-picture-overlay"
+                            onclick="document.getElementById('file-input').click();"
+                        >
+                            <span>পরিবর্তন করুন</span>
+                        </div>
+                    </div>
+                    <input
+                        type="file"
+                        id="file-input"
+                        accept="image/*"
+                        onchange="changeProfilePicture(event)"
+                    />
+                    <h2 id="user-fullname" align="center">জন ডো</h2>
+                    <p class="text-section" id="user-username" align="center">
+                        @johndoe
+                    </p>
+                    <div class="profile-stats">
+                        <div class="stat">
+                            <div class="stat-value" id="orders-count">0</div>
+                            <div class="alert">অর্ডার</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="reviews-count">0</div>
+                            <div class="alert">রিভিউ</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="wishlist-count">0</div>
+                            <div class="alert">উইশলিস্ট</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-form">
+                    <h2>প্রোফাইল সম্পাদনা করুন</h2>
+                    <form id="profile-form" onsubmit="updateProfile(event)">
+                        <div class="form-group">
+                            <label for="username">ইউজারনেম</label>
+                            <input
+                                type="text"
+                                id="username"
+                                name="username"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="fullname">পুরো নাম</label>
+                            <input
+                                type="text"
+                                id="fullname"
+                                name="fullname"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="email">ইমেইল</label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                required
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">ফোন</label>
+                            <input type="tel" id="phone" name="phone" />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">ঠিকানা</label>
+                            <textarea
+                                id="address"
+                                name="address"
+                                rows="3"
+                            ></textarea>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">নতুন পাসওয়ার্ড</label>
+                            <input
+                                type="password"
+                                id="password"
+                                name="password"
+                            />
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password"
+                                >নতুন পাসওয়ার্ড নিশ্চিত করুন</label
+                            >
+                            <input
+                                type="password"
+                                id="confirm-password"
+                                name="confirm-password"
+                            />
+                        </div>
+                        <div id="password-error" class="error"></div>
+                        <div id="update-success" class="success"></div>
+                        <button class="wobble-button" type="submit">
+                            প্রোফাইল আপডেট করুন
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()">🌔</button>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                const user = JSON.parse(localStorage.getItem("loggedInUser"));
+                if (!user || !user.fullname || !user.username) {
+                    alert("কোন ইউজার লগইন অবস্থায় নেই!!!");
+                    window.location.href = "index.html";
+                } else {
+                    populateUserProfile(user);
+                }
+            });
+            function populateUserProfile(user) {
+                document.getElementById("user-fullname").textContent = user.fullname;
+                document.getElementById("user-username").textContent = user.username;
+                document.getElementById("profile-pic").src = user.photo || "default.jpg";
+                document.getElementById("username").value = user.username;
+                document.getElementById("fullname").value = user.fullname;
+                document.getElementById("email").value = user.email;
+                document.getElementById("phone").value = user.phone || "";
+                document.getElementById("address").value = user.address || "";
+            }
+            function changeProfilePicture(event) {
+                const reader = new FileReader();
+                reader.onload = function () {
+                    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+                    const users = JSON.parse(localStorage.getItem("users")) || [];
+                    loggedInUser.photo = reader.result;
+                    localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
+                    document.getElementById("profile-pic").src = reader.result;
+                    const userIndex = users.findIndex(
+                        (user) => user.id === loggedInUser.id
+                    );
+                    if (userIndex !== -1) {
+                        users[userIndex].photo = reader.result;
+                        localStorage.setItem("users", JSON.stringify(users));
+                    }
+                };
+                reader.readAsDataURL(event.target.files[0]);
+            }
+            function updateProfile(event) {
+                event.preventDefault();
+                const users = JSON.parse(localStorage.getItem("users")) || [];
+                const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+                const userIndex = users.findIndex(
+                    (user) => user.username === loggedInUser.username
+                );
+                if (userIndex === -1) {
+                    alert("User not found");
+                    return;
+                }
+                const updatedUser = {
+                    ...users[userIndex],
+                    fullname: document.getElementById("fullname").value,
+                    username: document.getElementById("username").value,
+                    email: document.getElementById("email").value,
+                    phone: document.getElementById("phone").value,
+                    address: document.getElementById("address").value,
+                };
+                const password = document.getElementById("password").value;
+                const confirmPassword = document.getElementById("confirm-password").value;
+                if (password) {
+                    if (password === confirmPassword) {
+                        updatedUser.password = password;
+                    } else {
+                        document.getElementById("password-error").textContent =
+                            "পাসওয়ার্ড মিলছে না";
+                        return;
+                    }
+                }
+                users[userIndex] = updatedUser;
+                localStorage.setItem("users", JSON.stringify(users));
+                localStorage.setItem("loggedInUser", JSON.stringify(updatedUser));
+                document.getElementById("update-success").textContent =
+                    "প্রোফাইল সফলভাবে আপডেট করা হয়েছে";
+            }
+            function toggleTheme() {
+                document.body.classList.toggle("dark-mode");
+            }
+            function logout() {
+                const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                const userId = JSON.parse(localStorage.getItem("loggedInUser"))?.id;
+                if (cart.length > 0 && userId) {
+                    localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+                }
+                localStorage.removeItem("loggedInUser");
+                localStorage.removeItem("cart");
+                window.location.href = "index.html";
+            }
+            setTimeout(logout, 3000000);
+        </script>
+<script>
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  const forbiddenKeys = ["u", "s", "c", "p", "x", "a", "v"];
+  if (e.ctrlKey && forbiddenKeys.includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I")) {
+    e.preventDefault();
+  }
+});
+["copy", "cut", "paste", "dragstart"].forEach((evt) =>
+  document.addEventListener(evt, (e) => e.preventDefault())
+);
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 2 || window.outerHeight - window.innerHeight > 200) {
+    document.body.innerHTML = `
+    <style>
+      body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Poppins', sans-serif; text-align: center; }
+      .overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: radial-gradient(circle, #ff0000, #8b0000);
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
+      h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
+      p { font-size: 1.2rem; max-width: 80%; margin: auto; }
+      .error-icon { font-size: 5rem; color: #fff; animation: blink 0.8s infinite alternate; }
+      @keyframes blink { 0% { opacity: 1; } 100% { opacity: 0.4; } }
+    </style>
+    <div class="overlay">
+      <div>
+        <div class="error-icon">🚫</div>
+        <h1>Security Violation Detected</h1>
+        <p>Our system detected an unauthorized attempt. Access has been locked.<br>Close all developer tools and refresh the page.</p>
+      </div>
+    </div>
+    `;
+  }
+}, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  const tables = document.querySelectorAll("table");
+  tables.forEach((table) => {
+    const cells = table.querySelectorAll("td");
+    cells.forEach((cell, index) => {
+      cell.style.transition = "transform 0.3s ease, background 0.3s ease";
+      cell.addEventListener("mouseenter", () => {
+        cell.style.transform = "scale(1.1) rotateY(5deg)";
+        cell.style.background = "rgba(255, 165, 0, 0.7)";
+      });
+      cell.addEventListener("mouseleave", () => {
+        cell.style.transform = "scale(1) rotateY(0deg)";
+        cell.style.background = "";
+      });
+    });
+  });
+});
+</script>
+    </body>
+</html>

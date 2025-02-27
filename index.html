@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⛩️</title>
+   <style>
+   html,body {
+       overflow: auto;
+       scrollbar-width: none;
+       -ms-overflow-style: none;
+       scroll-behavior: smooth;
+       height: 100%;
+       overscroll-behavior: none;
+       -webkit-overflow-scrolling: touch;
+   }
+   html::-webkit-scrollbar,
+   body::-webkit-scrollbar {
+       width: 0;
+       height: 0;
+   }
+   .no-scrollbar {
+       overflow: auto;
+       scrollbar-width: none;
+       -ms-overflow-style: none;
+       scroll-behavior: smooth;
+   }
+   .no-scrollbar::-webkit-scrollbar {
+       width: 0;
+       height: 0;
+   }
+   @media (max-width: 9999px) {
+       html,
+       body {
+           -ms-overflow-style: -ms-autohiding-scrollbar;
+       }
+   }
+   html {
+       font-size: calc(0.6vw + 0.6vh + 0.35vmin);
+   }
+   body {
+       font-family: "Roboto", sans-serif;
+       background: linear-gradient(135deg, #f76b1c, #d6416a);
+       display: flex;
+       justify-content: center;
+       align-items: center;
+       height: 100vh;
+       margin: 0;
+       overflow: hidden;
+       position: relative;
+       perspective: 1000px;
+       animation: backgroundGradient 5s ease infinite alternate;
+   }
+   @keyframes backgroundGradient {
+       0% {
+           background: linear-gradient(135deg, #f76b1c, #d6416a);
+       }
+       25% {
+           background: linear-gradient(135deg, #d6416a, #f76b1c, #12c6dd);
+       }
+       50% {
+           background: linear-gradient(135deg, #12c6dd, #f76b1c, #a2e6ff);
+       }
+       75% {
+           background: linear-gradient(135deg, #a2e6ff, #f76b1c, #d6416a);
+       }
+       100% {
+           background: linear-gradient(135deg, #f76b1c, #d6416a);
+       }
+   }
+   .overlay-video {
+       position: absolute;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 100%;
+       height: 100%;
+       object-fit: cover;
+       opacity: 0.85;
+       pointer-events: none;
+       animation: overlayPulse 5s infinite alternate;
+   }
+   @keyframes overlayPulse {
+       0% {
+           opacity: 0.85;
+       }
+       100% {
+           opacity: 0.55;
+       }
+   }
+   main {
+       background-image: url("shortly_bevor_cow_abduction_by_magicbreeze1_dh63uh1.png");
+       background-size: cover;
+       background-position: center;
+       padding: 2rem;
+       border-radius: 2rem;
+       box-shadow:
+           0 0 15px rgba(255, 215, 0, 0.9),
+           inset 0 0 10px rgba(255, 223, 0, 0.8),
+           0 5px 15px rgba(0, 0, 0, 0.7);
+       max-width: 35vw;
+       max-height: 80vh;
+       width: auto;
+       height: auto;
+       z-index: 1;
+       /*transform: scale(1.8) rotateY(-30deg) rotateX(15deg);
+       animation:
+           slideIn 1s ease forwards,
+           scaleUp 1s ease 1s forwards,
+           float 6s ease-in-out 2s infinite;*/
+       position: relative;
+       backdrop-filter: blur(3px);
+       overflow: hidden;
+   }
+   .container {
+       background-color: rgba(255, 255, 255, 0.4);
+       padding: 2rem;
+       border-radius: 2rem;
+       box-shadow: 0 3vw 6vw rgba(0, 0, 0, 0.4);
+       max-width: 50vw;
+       max-height: 70vh;
+       width: auto;
+       height: auto;
+       z-index: 1;
+       /*transform: scale(0.8) rotateY(-30deg) rotateX(15deg);
+       animation:
+           arrive 1s ease forwards,
+           float 6s ease-in-out 2s infinite;*/
+       position: relative;
+       backdrop-filter: blur(2px);
+       background-color: rgba(30, 50, 100, 0.5);
+   }
+   @keyframes arrive {
+       0% {
+           opacity: 0;
+           transform: translateY(100px);
+       }
+       100% {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   @keyframes float {
+       0%,
+       100% {
+           transform: translateY(0) rotateY(0deg);
+       }
+       50% {
+           transform: translateY(-15px) rotateY(15deg);
+       }
+   }
+   h1 {
+       margin-bottom: 0.5em;
+       font-weight: bold;
+       color: white;
+       text-align: center;
+       font-size: calc(3rem + 1vmin);
+       text-shadow:
+           2px 2px 6px rgba(255, 223, 0, 0.8),
+           4px 4px 12px rgba(255, 185, 0, 0.8),
+           6px 6px 18px rgba(255, 140, 0, 0.7),
+           8px 8px 24px rgba(255, 100, 0, 0.5);
+   }
+   @keyframes colorChange {
+       0% {
+           color: #f5c17a;
+       }
+       50% {
+           color: #f5c17a;
+       }
+       100% {
+           color: #f5c17a;
+       }
+   }
+   @keyframes textGlow {
+       0% {
+           text-shadow:
+               0 0 10px rgba(255, 255, 255, 0.6),
+               0 0 20px rgba(255, 255, 255, 0.5),
+               0 0 30px rgba(255, 255, 255, 0.4),
+               0 0 40px rgba(255, 255, 255, 0.3),
+               0 0 50px rgba(255, 255, 255, 0.2);
+       }
+       100% {
+           text-shadow:
+               0 0 20px rgba(255, 255, 255, 0.9),
+               0 0 40px rgba(255, 255, 255, 0.8),
+               0 0 60px rgba(255, 255, 255, 0.7),
+               0 0 80px rgba(255, 255, 255, 0.6),
+               0 0 100px rgba(255, 255, 255, 0.5);
+       }
+   }
+   @keyframes gradientMove {
+       0% {
+           background-position: 0% 50%;
+       }
+       50% {
+           background-position: 100% 50%;
+       }
+       100% {
+           background-position: 0% 50%;
+       }
+   }
+   @keyframes pulse {
+       0% {
+           transform: scale(1);
+       }
+       100% {
+           transform: scale(1.05);
+       }
+   }
+   @keyframes slideIn {
+       from {
+           opacity: 0;
+           transform: translateX(-150px);
+       }
+       to {
+           opacity: 1;
+           transform: translateX(0);
+       }
+   }
+   h2,
+   h3 {
+       color: white;
+       text-shadow: 0 0 6px rgba(255, 0, 117, 0.7), 0 0 12px rgba(0, 255, 146, 0.7);
+       position: relative;
+       font-weight: bold;
+       text-align: center;
+       background-image: linear-gradient(to right, #f76b1c, #ff4500, #d6416a);
+       -webkit-background-clip: text;
+       background-clip: text;
+       color: transparent;
+       border: 2px solid transparent;
+       padding: 0.4em 0.75em;
+       border-radius: 10px;
+       animation: glowText 2s ease-in-out infinite alternate;
+       transition: transform 0.3s ease, border-color 0.3s ease;
+   }
+   h2 {
+       font-size: calc(1.75rem + 0.6vmin);
+   }
+   h3 {
+       font-size: calc(1.4rem + 0.5vmin);
+   }
+   h2:hover,
+   h3:hover {
+       transform: scale(1.05) translateY(-3px);
+       border-color: yellow;
+   }
+   @keyframes glowText {
+       0% {
+           text-shadow:
+               2px 2px 6px rgba(255, 223, 0, 0.8),
+               4px 4px 12px rgba(255, 185, 0, 0.8),
+               6px 6px 18px rgba(255, 140, 0, 0.7),
+               8px 8px 24px rgba(255, 100, 0, 0.5);
+       }
+       100% {
+           text-shadow:
+               0 0 32px rgba(255, 223, 0, 0.9),
+               0 0 64px rgba(255, 223, 0, 0.7),
+               0 0 96px rgba(255, 223, 0, 0.5),
+               0 0 128px rgba(255, 223, 0, 0.3),
+               2px 2px 0 #000,
+               3px 3px 0 #333;
+       }
+   }
+   h4 {
+       display: block;
+       margin-bottom: 0.75em;
+       color: white;
+       text-shadow:
+           2px 2px 6px rgba(255, 223, 0, 0.8),
+           4px 4px 12px rgba(255, 185, 0, 0.8),
+           6px 6px 18px rgba(255, 140, 0, 0.7),
+           8px 8px 24px rgba(255, 100, 0, 0.5);
+       font-size: calc(1.3rem + 0.4vmin);
+       position: relative;
+       padding: 0.5em;
+       border-radius: 5px;
+       transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+   }
+   h4 a {
+       color: transparent;
+       text-decoration: none;
+       font-size: calc(1rem + 0.25vmin);
+       font-weight: bold;
+       background-image: linear-gradient(to right, #ffffff, #68cc39);
+       -webkit-background-clip: text;
+       background-clip: text;
+       border-bottom: 2px solid transparent;
+       padding-bottom: 0.25em;
+       position: relative;
+       transition: color 0.4s ease, border-color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
+   }
+   h4 a::before {
+       content: '';
+       position: absolute;
+       left: 0;
+       bottom: 0;
+       width: 100%;
+       height: 2px;
+       background: linear-gradient(to right, #ffffff, #f76b1c);
+       transform: scaleX(0);
+       transform-origin: bottom right;
+       transition: transform 0.4s ease, background 0.4s ease;
+   }
+   h4 a:hover::before {
+       transform: scaleX(1);
+       transform-origin: bottom left;
+   }
+   h4 a:hover {
+       color: white;
+       text-shadow:
+           0px 0px 12px rgba(255, 223, 0, 0.9),
+           2px 2px 16px rgba(255, 185, 0, 0.8),
+           4px 4px 24px rgba(255, 140, 0, 0.7),
+           6px 6px 32px rgba(255, 100, 0, 0.6);
+       transform: translateY(-3px) scale(1.08);
+   }
+   h4 a:active {
+       color: #d6416a;
+       text-shadow:
+           0 0 6px rgba(255, 223, 0, 0.7),
+           1px 1px 12px rgba(255, 185, 0, 0.7),
+           3px 3px 18px rgba(255, 140, 0, 0.6);
+       transform: translateY(2px) scale(0.95);
+   }
+   button {
+       max-width: 25vw;
+       max-height: 40vh;
+       width: auto;
+       height: auto;
+       color: #f5c17a;
+       border: 2px solid #f5c17a;
+       padding: calc(10px + 0.5vmin);
+       border-radius: 12px;
+       cursor: pointer;
+       font-size: calc(0.85rem + 0.25vmin);
+       font-weight: bold;
+       text-transform: uppercase;
+       letter-spacing: 1px;
+       transition:
+           color 0.3s ease,
+           border-color 0.3s ease,
+           transform 0.3s ease,
+           box-shadow 0.3s ease,
+           filter 0.2s ease,
+           border-radius 0.3s ease;
+       animation: fadeInUp 1s ease;
+       outline: none;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3),
+           0 0 15px rgba(255, 255, 255, 0.5);
+       background: transparent;
+   }
+   button:hover {
+       color: #fff;
+       border-color: #fff;
+       transform: scale(1.1) perspective(500px) rotateX(5deg) rotateY(5deg);
+       box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4),
+           0 0 25px rgba(255, 255, 255, 0.6);
+       filter: brightness(1.2);
+       border-radius: 16px;
+   }
+   button:active {
+       color: #f5c17a;
+       border-color: #f5c17a;
+       transform: scale(0.95) perspective(500px) rotateX(2deg) rotateY(1deg);
+       box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3),
+           0 0 10px rgba(255, 255, 255, 0.4);
+   }
+   @keyframes fadeInUp {
+       from {
+           opacity: 0;
+           transform: translateY(40px);
+       }
+       to {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   label {
+       display: block;
+       margin-bottom: 0.25em;
+       color: #fff;
+       text-shadow:
+           2px 2px 4px #000,
+           4px 4px 8px #f39c12,
+           6px 6px 12px #e67e22;
+       font-size: calc(1rem + 0.5vmin);
+       font-weight: bold;
+       letter-spacing: 0.5px;
+   }
+   input[type="text"],
+   input[type="password"],
+   input[type="email"],
+   input[type="tel"],
+   input[type="file"] {
+       max-width: 25vw;
+       max-height: 40vh;
+       width: 89%;
+       font-size: calc(0.75rem + 0.25vmin);
+       padding: calc(8px + 0.5vmin);
+       margin-bottom: 0.75em;
+       border: 2px solid #f39c12;
+       border-radius: 12px;
+       background: linear-gradient(145deg, #ffffff, #f0f0f0);
+       box-shadow:
+           4px 4px 12px rgba(30, 50, 90, 0.2),
+           -4px -4px 12px rgba(25, 55, 155, 0.4),
+           0 0 15px rgba(0, 0, 0, 0.3),
+           inset 1px 1px 4px rgba(255, 255, 255, 0.2),
+           inset -1px -1px 4px rgba(0, 0, 0, 0.1);
+       transition: border-color 0.3s, box-shadow 0.3s, transform 0.5s ease-in-out, background-color 0.3s;
+       transform: perspective(500px) rotateX(10deg);
+       animation: inputAppear 0.5s ease forwards;
+       outline: none;
+   }
+   input[type="text"]:focus,
+   input[type="password"]:focus,
+   input[type="email"]:focus,
+   input[type="tel"]:focus,
+   input[type="file"]:focus {
+       border-color: #e67e22;
+       box-shadow:
+           0 0 12px rgba(255, 165, 0, 0.7),
+           0 0 24px rgba(255, 69, 0, 0.5);
+       transform: perspective(500px) rotateX(0) translateZ(20px);
+       background-color: #fff5e6;
+   }
+   input[type="text"]:hover,
+   input[type="password"]:hover,
+   input[type="email"]:hover,
+   input[type="tel"]:hover,
+   input[type="file"]:hover {
+       box-shadow:
+           0 4px 16px rgba(0, 0, 0, 0.2),
+           0 0 10px rgba(255, 69, 0, 0.5);
+       transform: perspective(500px) rotateX(5deg);
+   }
+   @keyframes inputAppear {
+       from {
+           opacity: 0;
+           transform: perspective(500px) rotateX(20deg) translateY(-20px);
+       }
+       to {
+           opacity: 1;
+           transform: perspective(500px) rotateX(10deg);
+       }
+   }
+   input[type="text"]::placeholder,
+   input[type="password"]::placeholder,
+   input[type="email"]::placeholder,
+   input[type="tel"]::placeholder,
+   input[type="file"]::placeholder {
+       color: rgba(255, 165, 0, 0.8);
+       font-size: calc(0.65rem + 0.25vmin);
+       font-style: italic;
+       letter-spacing: 0.5px;
+       transition: color 0.3s ease, letter-spacing 0.3s ease;
+   }
+   input[type="text"]:focus::placeholder,
+   input[type="password"]:focus::placeholder,
+   input[type="email"]:focus::placeholder,
+   input[type="tel"]:focus::placeholder,
+   input[type="file"]:focus::placeholder {
+       color: rgba(255, 69, 0, 0.9);
+       font-style: normal;
+       letter-spacing: 1px;
+       transform: scale(1.05);
+   }
+   #signup-container {
+       overflow-y: auto;
+       scrollbar-width: none;
+       scroll-behavior: smooth;
+   }
+   #signup-container::-webkit-scrollbar {
+       display: none;
+   }
+   @keyframes scaleUp {
+       0% {
+           transform: scale(1);
+           opacity: 0;
+       }
+       25% {
+           transform: scale(0.25);
+           opacity: 0.75;
+       }
+       50% {
+           transform: scale(0.75);
+           opacity: 1;
+       }
+       75% {
+           transform: scale(1.25);
+           opacity: 1;
+       }
+       100% {
+           transform: scale(1);
+           opacity: 1;
+       }
+   }
+   @keyframes fadeInUp {
+       0% {
+           opacity: 0;
+           transform: translateY(20px);
+       }
+       100% {
+           opacity: 1;
+           transform: translateY(0);
+       }
+   }
+   @media (max-width: 768px) {
+       body {
+           padding: 1rem;
+       }
+       main,
+       .container {
+           max-width: 90vw;
+           max-height: 80vh;
+           padding: 1rem;
+           margin: 0 auto;
+       }
+       input[type="text"],
+       input[type="password"],
+       input[type="email"],
+       input[type="tel"],
+       input[type="file"] {
+           max-width: 100%;
+           width: 100%;
+           box-sizing: border-box;
+       }
+       button {
+           max-width: 100%;
+           width: 100%;
+       }
+       h1 {
+           font-size: calc(1.25rem + 1vmin);
+       }
+       label,
+       input,
+       button {
+           font-size: calc(0.75rem + 0.5vmin);
+       }
+   }
+   </style>
+</head>
+<body>
+    <div class="overlay">
+        <video class="overlay-video" width="100%" height="auto" autoplay muted loop>
+            <source src="186195-877323695.mp4" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+    </div>
+    <main>
+        <div class="container" id="login-container">
+            <h1>লগ ইন করুন</h1>
+            <form id="login-form" onsubmit="login(event)">
+                <h2><label for="username">ব্যবহারকারীর নাম:</label>
+                    <input type="text" placeholder="  ♛আপনার সংক্ষিপ্ত নাম দিন..." id="username" required />
+                    <label for="password">পাসওয়ার্ড:<span id="togglePassword">👁️</span></label>
+                    <input type="password" placeholder="  🔐পাসওয়ার্ড দিন..." id="password" required />
+                </h2>
+                <div style="text-align: center;">
+                    <button type="submit">লগ ইন</button>
+                </div>
+            </form>
+            <div class="signup-link">
+                <p>
+                <h4> অ্যাকাউন্ট নেই? <a href="#" onclick="showSignup()">📝সাইন আপ</a></h4>
+                </p>
+            </div>
+        </div>
+        <div class="container" id="signup-container" style="display: none;">
+            <h1>সাইন আপ করুন</h1>
+            <form id="signup-form" onsubmit="signup(event)">
+                <h3>
+                    <label for="signup-username">ব্যবহারকারীর নাম:</label>
+                    <input type="text" placeholder="  ♛আপনার সংক্ষিপ্ত নাম দিন..." id="signup-username" required />
+                    <label for="signup-fullname">পূর্ণ নাম:</label>
+                    <input type="text" placeholder="  ♛আপনার পূর্ণ নাম দিন..." id="signup-fullname" required />
+                    <label for="signup-email">ই-মেইল:</label>
+                    <input type="email" placeholder="  📧আপনার ইমেইল দিন..." id="signup-email" required />
+                    <label for="signup-password">পাসওয়ার্ড:</label>
+                    <div class="password-strength"></div>
+                    <input type="password" placeholder="  🔐পাসওয়ার্ড দিন..." id="signup-password" required />
+                    <label for="signup-photo">প্রোফাইল ছবি:</label>
+                    <input type="file" placeholder="  👤আপনার প্রোফাইল পিক দিন..." id="signup-photo" accept="image/*" onchange="previewPhoto()" required />
+                    <img id="photo-preview" src="#" alt="Photo Preview" style="display: none; width: 100px; height: 100px" />
+                    <label for="signup-phone">মোবাইল নম্বর:</label>
+                    <input type="tel" placeholder="  📞আপনার মোবাইল নম্বর দিন..." id="signup-phone" required />
+                    <label for="signup-address">ঠিকানা:</label>
+                    <input type="text" placeholder="  🏠আপনার ঠিকানা দিন..." id="signup-address" required></textarea>
+                    <div style="text-align: center;">
+                        <button type="submit">সাইন আপ</button>
+                    </div>
+                </h3>
+            </form>
+            <br>
+            <div class="social-login" style="text-align: center;">
+                <button class="facebook" onclick="socialLogin('ফেসবুক')"> ফেসবুক </button>
+                <button class="google" onclick="socialLogin('গুগল')"> গুগল </button>
+                <button class="twitter" onclick="socialLogin('টুইটার')"> টুইটার </button>
+            </div>
+            <div class="signup-link">
+                <p>
+                <h4>ইতিমধ্যে অ্যাকাউন্ট আছে?<a href="#" onclick="showLogin()">🔐লগ ইন</a></h4>
+                </p>
+            </div>
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            saveUsers();
+            saveProducts();
+            setupLoginSignupForms();
+            console.log("Saved users:", JSON.parse(localStorage.getItem("users")));
+        });
+        function saveProducts() {
+            if (!localStorage.getItem("products")) {
+                const products = [{
+                    "id": 1,
+                    "name": "গির গরু",
+                    "price": 160000,
+                    "image": "cow1.jpg",
+                    "category": "dairy",
+                    "description": "গির গরু খুবই শক্তিশালী এবং উচ্চ দুধ উৎপাদনক্ষম।"
+                }, {
+                    "id": 15,
+                    "name": "সুইস গরু",
+                    "price": 340000,
+                    "image": "cow19.jpg",
+                    "category": "dairy",
+                    "description": "সুইস গরু মৃদু প্রকৃতির এবং দুধ উৎপাদনক্ষম।"
+                }, {
+                    "id": 16,
+                    "name": "লিমোসিন গরু",
+                    "price": 360000,
+                    "image": "cow21.jpg",
+                    "category": "cow",
+                    "description": "লিমোসিন গরু মাংস উৎপাদনের জন্য বিখ্যাত।"
+                }, {
+                    "id": 17,
+                    "name": "মারখান্দ গরু",
+                    "price": 540000,
+                    "image": "cow39.jpg",
+                    "category": "dairy",
+                    "description": "মারখান্দ গরু শক্তিশালী এবং উচ্চ দুধ উৎপাদনক্ষম।"
+                }, {
+                    "id": 18,
+                    "name": "ইংলিশ গরু",
+                    "price": 640000,
+                    "image": "cow49.jpg",
+                    "category": "cow",
+                    "description": "ইংলিশ গরু মাংস উৎপাদনের জন্য পরিচিত।"
+                }, {
+                    "id": 19,
+                    "name": "স্কটিশ গরু",
+                    "price": 650000,
+                    "image": "cow50.jpg",
+                    "category": "cow",
+                    "description": "স্কটিশ গরু ঠান্ডা আবহাওয়ায় ভালোভাবে টিকে থাকে।"
+                }, {
+                    "id": 2,
+                    "name": "সাহীয়াল গরু",
+                    "price": 170000,
+                    "image": "cow2.png",
+                    "category": "cow",
+                    "description": "সাহীয়াল গরু পাকিস্তান ও ভারতের উপযুক্ত আবহাওয়ায় ভালোভাবে বৃদ্ধি পায়।"
+                }, {
+                    "id": 3,
+                    "name": "থারপাকর গরু",
+                    "price": 180000,
+                    "image": "cow3.jpg",
+                    "category": "dairy",
+                    "description": "থারপাকর গরু দুধ উৎপাদনের জন্য বিখ্যাত।"
+                }, {
+                    "id": 4,
+                    "name": "জার্সি গরু",
+                    "price": 190000,
+                    "image": "cow4.jpg",
+                    "category": "dairy",
+                    "description": "জার্সি গরু ছোট আকারের এবং দুধের ফ্যাট কনটেন্ট বেশি।"
+                }, {
+                    "id": 5,
+                    "name": "ফ্রিজিয়ান গরু",
+                    "price": 200000,
+                    "image": "cow5.jpg",
+                    "category": "dairy",
+                    "description": "ফ্রিজিয়ান গরু উচ্চ দুধ উৎপাদনের জন্য বিখ্যাত।"
+                }, {
+                    "id": 6,
+                    "name": "শিন্দি গরু",
+                    "price": 210000,
+                    "image": "cow6.jpg",
+                    "category": "cow",
+                    "description": "শিন্দি গরু দুধ ও মাংসের জন্য উপযুক্ত।"
+                }, {
+                    "id": 8,
+                    "name": "ব্রহ্মণ গরু",
+                    "price": 230000,
+                    "image": "cow8.jpg",
+                    "category": "cow",
+                    "description": "ব্রহ্মণ গরু গরম আবহাওয়ায় ভালোভাবে টিকে থাকে।"
+                }, {
+                    "id": 9,
+                    "name": "চিয়ানিনা গরু",
+                    "price": 250000,
+                    "image": "cow10.jpg",
+                    "category": "cow",
+                    "description": "চিয়ানিনা গরু ইতালির অন্যতম প্রাচীন এবং বৃহত্তম গরুর প্রজাতি।"
+                }, {
+                    "id": 10,
+                    "name": "লিমোজিন গরু",
+                    "price": 260000,
+                    "image": "cow11.jpg",
+                    "category": "cow",
+                    "description": "লিমোজিন গরু মাংস উৎপাদনের জন্য বিখ্যাত।"
+                }, {
+                    "id": 11,
+                    "name": "চ্যারোলাস গরু",
+                    "price": 270000,
+                    "image": "cow12.jpg",
+                    "category": "cow",
+                    "description": "চ্যারোলাইস গরু মাংস উৎপাদনের জন্য প্রধানত পরিচিত।"
+                }, {
+                    "id": 12,
+                    "name": "গুজরাট গরু",
+                    "price": 280000,
+                    "image": "4566.png",
+                    "category": "dairy",
+                    "description": "গুজরাট গরু ভারতের একটি গুরুত্বপূর্ণ দুধ উৎপাদনকারী প্রজাতি।"
+                }, {
+                    "id": 13,
+                    "name": "মুরাহ গরু",
+                    "price": 320000,
+                    "image": "cow17.jpg",
+                    "category": "dairy",
+                    "description": "মুরাহ গরু ভারতের অন্যতম দুধ উৎপাদনকারী প্রজাতি।"
+                }, {
+                    "id": 14,
+                    "name": "ব্লু গরু",
+                    "price": 330000,
+                    "image": "cow18.jpg",
+                    "category": "cow",
+                    "description": "ব্লু গরু মাংস উৎপাদনের জন্য পরিচিত।"
+                }];
+                localStorage.setItem("products", JSON.stringify(products));
+            }
+        }
+        function saveUsers() {
+            if (!localStorage.getItem("users")) {
+                const users = [{
+                    id: 1,
+                    username: "anms",
+                    fullname: "খলিফা আহম্মেদ আল আমিন",
+                    email: "anms@gmail.com",
+                    phone: "০১৩২০৩৮৯৫৩৯",
+                    address: "১৭৬/৩ ,পশ্চিম আরজাতপাড়া ,মহাখালী ,ঢাকা-১২১৫ ,বাংলাদেশ",
+                    password: "anms",
+                    photo: "anms.jpeg",
+                    isAdmin: false
+                }, {
+                    id: 2,
+                    username: "cow",
+                    fullname: "গরু মশাই",
+                    email: "cow@gmail.com",
+                    phone: "০১৩২০৩৮৯৫৩৯",
+                    address: "১৭৬/৩ ,পশ্চিম আরজাতপাড়া ,মহাখালী, ঢাকা-১২১৫ ,বাংলাদেশ",
+                    password: "cow",
+                    photo: "cowman.jpg",
+                    isAdmin: false
+                }, {
+                    id: 3,
+                    username: "admin",
+                    fullname: "Admin User",
+                    email: "admin@example.com",
+                    phone: "০১৩২০৩৮৯৫৩৯",
+                    address: "১৭৬/৩ ,পশ্চিম আরজাতপাড়া ,মহাখালী ,ঢাকা-১২১৫, বাংলাদেশ",
+                    password: "admin",
+                    photo: "default.jpg",
+                    isAdmin: true
+                }];
+                localStorage.setItem("users", JSON.stringify(users));
+            }
+        }
+        function setupLoginSignupForms() {
+            document.getElementById("signup-password").addEventListener("input", function() {
+                checkPasswordStrength(this.value);
+            });
+            document.getElementById("login-form").addEventListener("submit", function(event) {
+                login(event);
+            });
+            document.getElementById("signup-form").addEventListener("submit", function(event) {
+                signup(event);
+            });
+        }
+        function checkPasswordStrength(password) {
+            const strengthBar = document.querySelector('.password-strength');
+            const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+            const mediumRegex = new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+            if (strongRegex.test(password)) {
+                strengthBar.style.backgroundColor = "green";
+                strengthBar.style.width = "100%";
+            } else if (mediumRegex.test(password)) {
+                strengthBar.style.backgroundColor = "orange";
+                strengthBar.style.width = "66%";
+            } else {
+                strengthBar.style.backgroundColor = "red";
+                strengthBar.style.width = "33%";
+            }
+        }
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const hashedPassword = password;
+            const users = JSON.parse(localStorage.getItem("users")) || [];
+            const user = users.find((user) => user.username === username && user.password === password);
+            if (user) {
+                localStorage.setItem("loggedInUser", JSON.stringify(user));
+                window.location.href = user.isAdmin ? "admin_panel.html" : "user_dashboard.html";
+            } else {
+                alert("🙅‍♂️ব্যবহারকারীর নাম অথবা পাসওয়ার্ড ভুল❗দয়া করে আবার চেষ্টা করুন।");
+            }
+        }
+        function previewPhoto() {
+            const photo = document.getElementById('signup-photo').files[0];
+            const preview = document.getElementById('photo-preview');
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                preview.src = reader.result;
+                preview.style.display = 'block';
+            };
+            if (photo) {
+                reader.readAsDataURL(photo);
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        }
+        function signup(event) {
+            event.preventDefault();
+            const username = document.getElementById('signup-username').value;
+            const fullname = document.getElementById('signup-fullname').value;
+            const email = document.getElementById('signup-email').value;
+            const phone = document.getElementById('signup-phone').value;
+            const address = document.getElementById('signup-address').value;
+            const password = document.getElementById('signup-password').value;
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const photo = document.getElementById('signup-photo').files[0];
+            const reader = new FileReader();
+            reader.onloadend = function() {
+                const newUser = {
+                    id: Date.now(),
+                    username: username,
+                    fullname: fullname,
+                    email: email,
+                    phone: phone,
+                    address: address,
+                    password: password,
+                    photo: reader.result,
+                    isAdmin: false,
+                };
+                users.push(newUser);
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('loggedInUser', JSON.stringify(newUser));
+                showLogin();
+            };
+            if (photo) {
+                const existingUser = users.find(user => user.username === username || user.email === email);
+                if (existingUser) {
+                    alert("🙅‍♂️ব্যবহারকারীর নাম অথবা ইমেল ইতিমধ্যেই ব্যবহার করা হয়েছে❗ দয়া করে অন্যটি চেষ্টা করুন।");
+                    return;
+                }
+                reader.readAsDataURL(photo);
+            } else {
+                alert("🙅‍♂️দয়া করে একটি প্রোফাইল ছবি আপলোড করুন।");
+            }
+        }
+        function showSignup() {
+            document.getElementById("signup-container").style.display = "block";
+            document.getElementById("login-container").style.display = "none";
+        }
+        function showLogin() {
+            document.getElementById("signup-container").style.display = "none";
+            document.getElementById("login-container").style.display = "block";
+        }
+        function socialLogin(platform) {
+            console.log(`Logging in with ${platform}`);
+            alert(`🤷🏻${platform} লগইন এখনো বাস্তবায়িত হয়নি।`);
+        }
+        document.getElementById('togglePassword').addEventListener('click', function() {
+            const passwordField = document.getElementById('password');
+            const toggleIcon = document.getElementById('togglePassword');
+            if (passwordField.type === 'password') {
+                passwordField.type = 'text';
+                toggleIcon.textContent = '👁️‍🗨️';
+            } else {
+                passwordField.type = 'password';
+                toggleIcon.textContent = '👁️';
+            }
+        });
+    </script>
+<script>
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  const forbiddenKeys = ["u", "s", "c", "p", "x", "a", "v"];
+  if (e.ctrlKey && forbiddenKeys.includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I")) {
+    e.preventDefault();
+  }
+});
+["copy", "cut", "paste", "dragstart"].forEach((evt) =>
+  document.addEventListener(evt, (e) => e.preventDefault())
+);
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 2 || window.outerHeight - window.innerHeight > 200) {
+    document.body.innerHTML = `
+    <style>
+      body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Poppins', sans-serif; text-align: center; }
+      .overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: radial-gradient(circle, #ff0000, #8b0000);
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
+      h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
+      p { font-size: 1.2rem; max-width: 80%; margin: auto; }
+      .error-icon { font-size: 5rem; color: #fff; animation: blink 0.8s infinite alternate; }
+      @keyframes blink { 0% { opacity: 1; } 100% { opacity: 0.4; } }
+    </style>
+    <div class="overlay">
+      <div>
+        <div class="error-icon">🚫</div>
+        <h1>Security Violation Detected</h1>
+        <p>Our system detected an unauthorized attempt. Access has been locked.<br>Close all developer tools and refresh the page.</p>
+      </div>
+    </div>
+    `;
+  }
+}, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  const tables = document.querySelectorAll("table");
+  tables.forEach((table) => {
+    const cells = table.querySelectorAll("td");
+    cells.forEach((cell, index) => {
+      cell.style.transition = "transform 0.3s ease, background 0.3s ease";
+      cell.addEventListener("mouseenter", () => {
+        cell.style.transform = "scale(1.1) rotateY(5deg)";
+        cell.style.background = "rgba(255, 165, 0, 0.7)";
+      });
+      cell.addEventListener("mouseleave", () => {
+        cell.style.transform = "scale(1) rotateY(0deg)";
+        cell.style.background = "";
+      });
+    });
+  });
+});
+</script>
+</body>
+</html>

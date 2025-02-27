@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="bn">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>অ্যাডমিন প্যানেল</title>
+       <style>
+       html,body {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+           scroll-behavior: smooth;
+           height: 100%;
+           overscroll-behavior: none;
+       }
+       html::-webkit-scrollbar,
+       body::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           overflow: auto;
+           scrollbar-width: none;
+           -ms-overflow-style: none;
+       }
+       .no-scrollbar::-webkit-scrollbar {
+           width: 0;
+           height: 0;
+       }
+       .no-scrollbar {
+           scroll-behavior: smooth;
+       }
+       @media (max-width: 9999px) {
+           html,
+           body {
+               -ms-overflow-style: -ms-autohiding-scrollbar;
+           }
+       }
+       html,
+       body {
+           -webkit-overflow-scrolling: touch;
+       }
+       :root {
+           --primary-color: #4d96e2;
+           --secondary-color: #f19c02;
+           --background-color: #2c3e50;
+           --text-color: #fff;
+           --header-height: 8vh;
+           --nav-height: 5vh;
+           --base-font-size: 1.5vmin;
+       }
+       body {
+           font-family: "Roboto", Arial, sans-serif;
+           font-size: calc(var(--base-font-size) + 0.5vmin);
+           background-image: url("light-night-sunlight-fire-darkness-sparks-1264588-pxhere.com.jpg");
+           background-size: cover;
+           background-position: center;
+           background-repeat: no-repeat;
+           color: var(--text-color);
+           margin: 0;
+           padding: 0;
+           transition: all 0.3s ease;
+           overflow-x: hidden;
+       }
+       body::before {
+           content: "";
+           position: fixed;
+           top: 0;
+           left: 0;
+           width: 100%;
+           height: 100%;
+           background-color: var(--background-color);
+           opacity: 0.2;
+           pointer-events: none;
+       }
+       header {
+           background-color: rgba(0, 0, 0, 0.7);
+           height: var(--header-height);
+           padding: 2vh 0;
+           text-align: center;
+           position: sticky;
+           top: 0;
+           z-index: 1000;
+           backdrop-filter: blur(10px);
+       }
+       h1 {
+           margin: 0;
+           font-size: calc(2rem + 2vmin);
+           text-transform: uppercase;
+           letter-spacing: 0.3vmin;
+           color: var(--primary-color);
+           transform: translateZ(0);
+           transition: transform 0.3s ease;
+       }
+       h1:hover {
+           transform: translateZ(5vmin);
+       }
+       nav {
+           background-color: rgba(0, 0, 0, 0.5);
+           height: var(--nav-height);
+           padding: 1vh 1vw;
+       }
+       nav ul {
+           list-style: none;
+           padding: 0;
+           margin: 0;
+           display: flex;
+           justify-content: center;
+           flex-wrap: wrap;
+       }
+       nav ul li {
+           margin: 1vh 1vw;
+       }
+       nav ul li a {
+           color: var(--text-color);
+           text-decoration: none;
+           font-weight: bold;
+           transition: color 0.3s ease;
+           position: relative;
+           font-size: calc(1rem + 0.5vmin);
+       }
+       nav ul li a::after {
+           content: "";
+           position: absolute;
+           width: 100%;
+           height: 2px;
+           background-color: var(--secondary-color);
+           left: 0;
+           bottom: -5px;
+           transform: scaleX(0);
+           transition: transform 0.3s ease;
+       }
+       nav ul li a:hover::after {
+           transform: scaleX(1);
+       }
+       main {
+           max-width: 90vw;
+           margin: 2vh auto;
+           padding: 2vh 2vw;
+           background-color: rgba(255, 255, 255, 0.1);
+           border-radius: 1vmin;
+           box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
+           backdrop-filter: blur(0.1px);
+       }
+       h2 {
+           color: var(--secondary-color);
+           border-bottom: 0.2vmin solid var(--secondary-color);
+           padding-bottom: 1vh;
+           margin-top: 3vh;
+           font-size: calc(1.5rem + 1vmin);
+       }
+       table {
+           width: 100%;
+           margin: 2vh 0;
+           border-collapse: collapse;
+           background-color: rgba(255, 255, 255, 0.1);
+           box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
+           backdrop-filter: blur(0.1px);
+       }
+       th,
+       td {
+           padding: 1.5vmin;
+           text-align: center;
+           border-bottom: 0.1vmin solid rgba(255, 255, 255, 0.1);
+           font-size: calc(1rem + 0.5vmin);
+       }
+       thead {
+           background-color: rgba(0, 0, 0, 0.5);
+           color: var(--primary-color);
+           font-weight: bold;
+           box-shadow: 0 0 2vmin rgba(0, 0, 0, 0.3);
+           backdrop-filter: blur(0.1px);
+       }
+       td {
+           color: var(--text-color);
+       }
+       input[type="text"],
+       input[type="number"],
+       input[type="file"] {
+           width: 100%;
+           padding: 1vmin;
+           margin-bottom: 1vmin;
+           background-color: rgba(255, 255, 255, 0.1);
+           border: none;
+           border-radius: 0.5vmin;
+           color: var(--text-color);
+           transition: background-color 0.3s ease;
+       }
+       input[type="text"]:focus,
+       input[type="number"]:focus,
+       input[type="file"]:focus {
+           background-color: rgba(255, 255, 255, 0.2);
+       }
+       button {
+           background-color: var(--primary-color);
+           color: white;
+           border: none;
+           padding: 1vmin 2vmin;
+           border-radius: 0.5vmin;
+           cursor: pointer;
+           transition: background-color 0.3s ease, transform 0.3s ease;
+           font-size: calc(1rem + 0.5vmin);
+       }
+       button:hover {
+           background-color: #3a7bf5;
+           transform: translateY(-0.3vmin);
+       }
+       a {
+           color: blue;
+           text-decoration: none;
+           transition: color 0.3s ease, transform 0.3s ease;
+       }
+       a:hover {
+           color: darkblue;
+           text-decoration: underline;
+           transform: scale(1.05);
+       }
+       ul {
+           list-style: none;
+       }
+       li {
+           display: inline;
+           margin-right: 1vmin;
+       }
+       .delete-btn {
+           background: transparent;
+           border: none;
+           cursor: pointer;
+           font-size: calc(1.5rem + 0.5vmin);
+           transition: transform 0.3s ease, color 0.3s ease;
+       }
+       .delete-btn:hover {
+           transform: scale(1.2);
+           color: red;
+       }
+       @media (max-width: 768px) {
+           main {
+               padding: 1vmin;
+           }
+           h1 {
+               font-size: calc(2rem + 1vmin);
+           }
+           h2 {
+               font-size: calc(1.5rem + 0.5vmin);
+           }
+           table {
+               font-size: calc(0.9rem + 0.5vmin);
+           }
+       }
+       footer {
+           background: none;
+           padding: 3rem 0;
+           text-align: center;
+           position: relative;
+           box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.5);
+           perspective: 1000px;
+       }
+       #contact-btn {
+           background-color: var(--primary-color);
+           color: white;
+           padding: 10px 20px;
+           font-size: 1rem;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           transition: background-color 0.3s ease;
+       }
+       #contact-btn:hover {
+           background-color: var(--secondary-color);
+       }
+       .footer-content {
+           display: none;
+           margin-top: 20px;
+       }
+       .frame-container {
+           display: inline-block;
+           position: relative;
+           transform: rotateY(0deg);
+           transition: transform 0.6s ease-in-out;
+       }
+       .frame-container:hover {
+           transform: rotateY(20deg) rotateX(10deg);
+       }
+       .frame {
+           width: 200px;
+           height: 200px;
+           border: 5px solid var(--primary-color);
+           border-radius: 15px;
+           overflow: hidden;
+           box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+           background: var(--bg-color1);
+       }
+       .profile-image {
+           width: 100%;
+           height: 100%;
+           object-fit: cover;
+       }
+       .social-links {
+           position: absolute;
+           top: 0;
+           left: 0;
+           right: 0;
+           bottom: 0;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+           pointer-events: none;
+       }
+       .social-links a,
+       .email-link {
+           pointer-events: auto;
+           position: absolute;
+           transition: transform 0.4s ease-in-out, color 0.4s ease-in-out;
+           font-size: 1.5rem;
+           color: var(--footer-text);
+       }
+       .social-links img {
+           width: 40px;
+           height: 40px;
+           transition: transform 0.4s ease-in-out;
+       }
+       .facebook-link {
+           top: -60px;
+       }
+       .linkedin-link {
+           left: -60px;
+       }
+       .github-link {
+           right: -60px;
+       }
+       .email-link {
+           bottom: -40px;
+           font-size: 1rem;
+           letter-spacing: 0.05rem;
+           background: linear-gradient(45deg, #ff007f, #ff7f00, #ffff00, #7fff00, #00ff7f, #007fff, #7f00ff);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4),
+               -2px -2px 4px rgba(255, 255, 255, 0.5),
+               1px 1px 0px #ff00ff,
+               -1px -1px 0px #00ffff;
+           transform: perspective(500px) rotateX(10deg);
+       }
+       .frame-container:hover .facebook-link img {
+           transform: translateY(20px);
+       }
+       .frame-container:hover .linkedin-link img {
+           transform: translateX(20px);
+       }
+       .frame-container:hover .github-link img {
+           transform: translateX(-20px);
+       }
+       .frame-container:hover .email-link {
+           transform: translateY(-20px);
+       }
+       </style>
+    </head>
+    <body>
+        <header>
+            <h1>অ্যাডমিন প্যানেল</h1>
+        </header>
+        <nav>
+            <ul>
+                <li><a href="user_dashboard.html">🐄গরুর হাট </a></li>
+                <li><a href="javascript:logout();">↪লগ আউট </a></li>
+            </ul>
+        </nav>
+        <main>
+            <h2>ইউজার তালিকা</h2>
+            <div style="overflow-x: auto">
+                <table id="user-table">
+                    <thead>
+                        <tr>
+                            <th>ইউজারনেম</th>
+                            <th>পূর্ণ নাম</th>
+                            <th>ইমেইল</th>
+                            <th>পাসওয়ার্ড</th>
+                            <th>ছবি</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <h2>পণ্য যোগ করুন</h2>
+            <form id="product-form" onsubmit="addProduct(event)">
+                <label for="product-name">পণ্যের নাম:</label>
+                <input type="text" id="product-name" required />
+                <label for="product-price">দাম:</label>
+                <input type="number" id="product-price" required />
+                <label for="product-image">ছবি:</label>
+                <input
+                    type="file"
+                    id="product-image"
+                    accept="image/*"
+                    required
+                />
+                <button type="submit">পণ্য যোগ করুন</button>
+            </form>
+            <h2>পণ্য তালিকা</h2>
+            <div style="overflow-x: auto">
+                <table id="product-table">
+                    <thead>
+                        <tr>
+                            <th>নাম</th>
+                            <th>দাম</th>
+                            <th>ছবি</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <h2>রশিদের তথ্য তালিকা</h2>
+            <div style="overflow-x: auto">
+                <table id="checkouts-table">
+                    <thead>
+                        <tr>
+                            <th>তারিখ</th>
+                            <th>ইউজার নাম</th>
+                            <th>পণ্যের নাম</th>
+                            <th>দাম</th>
+                            <th>সংখ্যা</th>
+                            <th>মোট দাম</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+            <footer>
+                <button id="contact-btn">
+                    <h6>নির্মাতার সাথে যোগাযোগ করুন</h6>
+                </button>
+                <br /><br /><br /><br />
+                <div class="footer-content" id="footer-content">
+                    <div class="frame-container">
+                        <div class="frame">
+                            <img
+                                src="anms.jpeg"
+                                alt="Your Image"
+                                class="profile-image"
+                            />
+                        </div>
+                        <div class="social-links">
+                            <a
+                                href="https://www.facebook.com/Kholifa.Ahmed.Al.Amin.Rabbu"
+                                target="_blank"
+                                class="facebook-link"
+                            >
+                                <img
+                                    src="facebook_108044.png"
+                                    alt="Facebook"
+                                    class="social-icon"
+                                />
+                            </a>
+                            <a
+                                href="https://www.linkedin.com/in/kholifa-ahmad-al-amin-3856b1305/"
+                                target="_blank"
+                                class="linkedin-link"
+                            >
+                                <img
+                                    src="sociallinkedin_member_2751.png"
+                                    alt="LinkedIn"
+                                    class="social-icon"
+                                />
+                            </a>
+                            <a
+                                href="https://github.com/anms5519"
+                                target="_blank"
+                                class="github-link"
+                            >
+                                <img
+                                    src="github_icon-icons.com_60477.png"
+                                    alt="GitHub"
+                                    class="social-icon"
+                                />
+                            </a>
+                            <p class="email-link">
+                                ▄︻デ══━一💥kholifaahmadalamin@gmail.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </main>
+       <script>
+                        document.getElementById("contact-btn").addEventListener("click", function () {
+                            var footerContent = document.getElementById("footer-content");
+                            if (
+                                footerContent.style.display === "none" ||
+                                footerContent.style.display === ""
+                            ) {
+                                footerContent.style.display = "block";
+                            } else {
+                                footerContent.style.display = "none";
+                            }
+                        });
+                        document.addEventListener("DOMContentLoaded", () => {
+                            loadUsers();
+                            loadProducts();
+                            loadCheckouts();
+                        });
+                        const englishToBanglaDigits = {
+                            0: "০",
+                            1: "১",
+                            2: "২",
+                            3: "৩",
+                            4: "৪",
+                            5: "৫",
+                            6: "৬",
+                            7: "৭",
+                            8: "৮",
+                            9: "৯",
+                        };
+            function convertToBanglaDigits(number) {
+                if (number === undefined || number === null) {
+                    return "";
+                }
+                return number
+                    .toString()
+                    .split("")
+                    .map((digit) => englishToBanglaDigits[digit] || digit)
+                    .join("");
+            }
+                        function loadUsers() {
+                            const users = JSON.parse(localStorage.getItem("users")) || [];
+                            const userTableBody = document
+                                .getElementById("user-table")
+                                .getElementsByTagName("tbody")[0];
+                            userTableBody.innerHTML = "";
+                            users.forEach((user, index) => {
+                                const row = userTableBody.insertRow();
+                                const cellUsername = row.insertCell(0);
+                                const cellFullname = row.insertCell(1);
+                                const cellEmail = row.insertCell(2);
+                                const cellPassword = row.insertCell(3);
+                                const cellPhoto = row.insertCell(4);
+                                const cellOptions = row.insertCell(5);
+                                cellUsername.textContent = user.username;
+                                cellFullname.textContent = user.fullname;
+                                cellEmail.textContent = user.email;
+                                cellPassword.textContent = user.password;
+                                cellPhoto.innerHTML = `<img src="${user.photo}" alt="User Photo" style="max-width: 100px; max-height: 100px;">`;
+                                cellOptions.innerHTML = `<button class="delete-btn" onclick="deleteUser(${index})">❌</button>`;
+                            });
+                        }
+                        function deleteUser(index) {
+                            let users = JSON.parse(localStorage.getItem("users")) || [];
+                            users.splice(index, 1);
+                            localStorage.setItem("users", JSON.stringify(users));
+                            loadUsers();
+                        }
+                        function addProduct(event) {
+                            event.preventDefault();
+                            console.log("Adding product...");
+                            const productName = document.getElementById("product-name").value;
+                            const productPrice = document.getElementById("product-price").value;
+                            const productImage = document.getElementById("product-image").files[0];
+                            console.log("Product Image File: ", productImage);
+                            if (!productImage) {
+                                console.error("No image selected");
+                                return;
+                            }
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                const productImageURL = e.target.result;
+                                const products = JSON.parse(localStorage.getItem("products")) || [];
+                                const newProduct = {
+                                    id: Date.now(),
+                                    name: productName,
+                                    price: parseFloat(productPrice),
+                                    image: productImageURL,
+                                };
+                                products.push(newProduct);
+                                localStorage.setItem("products", JSON.stringify(products));
+                                loadProducts();
+                                console.log("Product added: ", newProduct);
+                            };
+                            reader.readAsDataURL(productImage);
+                            document.getElementById("product-form").reset();
+                        }
+                        function loadProducts() {
+                            const products = JSON.parse(localStorage.getItem("products")) || [];
+                            const productTableBody = document
+                                .getElementById("product-table")
+                                .getElementsByTagName("tbody")[0];
+                            productTableBody.innerHTML = "";
+                            products.forEach((product, index) => {
+                                const row = productTableBody.insertRow();
+                                const cellName = row.insertCell(0);
+                                const cellPrice = row.insertCell(1);
+                                const cellImage = row.insertCell(2);
+                                const cellOptions = row.insertCell(3);
+                                cellName.textContent = product.name;
+                                cellPrice.textContent = `৳${convertToBanglaDigits(product.price)}`;
+                                cellImage.innerHTML = `<img src="${product.image}" width="50" alt="${product.name}">`;
+                                cellOptions.innerHTML = `<button class="delete-btn" onclick="deleteProduct(${index})">❌</button>`;
+                            });
+                        }
+                        function deleteProduct(index) {
+                            let products = JSON.parse(localStorage.getItem("products")) || [];
+                            products.splice(index, 1);
+                            localStorage.setItem("products", JSON.stringify(products));
+                            loadProducts();
+                        }
+            function loadCheckouts() {
+                const checkouts = JSON.parse(localStorage.getItem("checkouts")) || [];
+                const checkoutTableBody = document.getElementById("checkouts-table").getElementsByTagName("tbody")[0];
+                checkoutTableBody.innerHTML = "";
+                checkouts.forEach((checkout, checkoutIndex) => {
+                    checkout.cart.forEach((product, index) => {
+                        const row = checkoutTableBody.insertRow();
+                        const cellDate = row.insertCell(0);
+                        const cellUser = row.insertCell(1);
+                        const cellProductName = row.insertCell(2);
+                        const cellProductPrice = row.insertCell(3);
+                        const cellProductquantity = row.insertCell(4);
+                        const cellProductTotalPrice = row.insertCell(5);
+                        const cellOption = row.insertCell(6);
+                        if (index === 0) {
+                            cellDate.textContent = checkout.date;
+                            cellUser.textContent = checkout.user;
+                            cellProductTotalPrice.textContent = `৳${convertToBanglaDigits(checkout.total) || "০"}`;
+                            cellOption.innerHTML = `<button class="delete-btn" onclick="deleteCheckout(${checkoutIndex})">❌</button>`;
+                        } else {
+                            cellDate.textContent = "";
+                            cellUser.textContent = "";
+                            cellProductTotalPrice.textContent = "";
+                            cellOption.innerHTML = "";
+                        }
+                        cellProductName.textContent = product.name;
+                        cellProductquantity.textContent = `${convertToBanglaDigits(product.quantity) || "০"}টি`;
+                        cellProductPrice.textContent = `৳${convertToBanglaDigits(product.price) || "০"}`;
+                    });
+                    const separatorRow = checkoutTableBody.insertRow();
+                    const separatorCell = separatorRow.insertCell(0);
+                    separatorCell.colSpan = 6;
+                    separatorCell.style.borderBottom = "2px solid #ccc";
+                    separatorCell.style.height = "1vh";
+                });
+            }
+                        function deleteCheckout(index) {
+                            let checkouts = JSON.parse(localStorage.getItem("checkouts")) || [];
+                            checkouts.splice(index, 1);
+                            localStorage.setItem("checkouts", JSON.stringify(checkouts));
+                            loadCheckouts();
+                        }
+                        function logout() {
+                            const cart = JSON.parse(localStorage.getItem("cart")) || [];
+                            const userId = JSON.parse(localStorage.getItem("loggedInUser"))?.id;
+                            if (cart.length > 0 && userId) {
+                                localStorage.setItem(`cart_${userId}`, JSON.stringify(cart));
+                            }
+                            localStorage.removeItem("loggedInUser");
+                            localStorage.removeItem("cart");
+                            window.location.href = "index.html";
+                        }
+                        setTimeout(logout, 30000);
+        </script>
+<script>
+document.addEventListener("contextmenu", (e) => e.preventDefault());
+document.addEventListener("keydown", (e) => {
+  const forbiddenKeys = ["u", "s", "c", "p", "x", "a", "v"];
+  if (e.ctrlKey && forbiddenKeys.includes(e.key.toLowerCase())) {
+    e.preventDefault();
+  }
+  if (e.key === "F12" || (e.ctrlKey && e.shiftKey && e.key.toUpperCase() === "I")) {
+    e.preventDefault();
+  }
+});
+["copy", "cut", "paste", "dragstart"].forEach((evt) =>
+  document.addEventListener(evt, (e) => e.preventDefault())
+);
+setInterval(() => {
+  if (window.outerWidth - window.innerWidth > 2 || window.outerHeight - window.innerHeight > 200) {
+    document.body.innerHTML = `
+    <style>
+      body { margin: 0; padding: 0; background: #000; color: #fff; font-family: 'Poppins', sans-serif; text-align: center; }
+      .overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
+        display: flex; flex-direction: column; justify-content: center; align-items: center;
+        background: radial-gradient(circle, #ff0000, #8b0000);
+        animation: pulse 1.5s infinite alternate;
+      }
+      @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.02); } }
+      h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 5px; margin-bottom: 20px; }
+      p { font-size: 1.2rem; max-width: 80%; margin: auto; }
+      .error-icon { font-size: 5rem; color: #fff; animation: blink 0.8s infinite alternate; }
+      @keyframes blink { 0% { opacity: 1; } 100% { opacity: 0.4; } }
+    </style>
+    <div class="overlay">
+      <div>
+        <div class="error-icon">🚫</div>
+        <h1>Security Violation Detected</h1>
+        <p>Our system detected an unauthorized attempt. Access has been locked.<br>Close all developer tools and refresh the page.</p>
+      </div>
+    </div>
+    `;
+  }
+}, 500);
+document.addEventListener("DOMContentLoaded", () => {
+  const tables = document.querySelectorAll("table");
+  tables.forEach((table) => {
+    const cells = table.querySelectorAll("td");
+    cells.forEach((cell, index) => {
+      cell.style.transition = "transform 0.3s ease, background 0.3s ease";
+      cell.addEventListener("mouseenter", () => {
+        cell.style.transform = "scale(1.1) rotateY(5deg)";
+        cell.style.background = "rgba(255, 165, 0, 0.7)";
+      });
+      cell.addEventListener("mouseleave", () => {
+        cell.style.transform = "scale(1) rotateY(0deg)";
+        cell.style.background = "";
+      });
+    });
+  });
+});
+</script>
+    </body>
+</html>
